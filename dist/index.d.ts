@@ -34,7 +34,7 @@ export const verifySignatures: (
 export const signMultiple: (data: string, signSecretKeys: string[], encoding?: Encoding) => string;
 export function bufferToHex(buffer: Uint8Array): string;
 export function hexToBuffer(hex: string): Uint8Array;
-
+export function random(): string;
 export const getMMPublicKey: () => Promise<string>;
 export const isMetaMask: boolean;
 export const encrypt: (message?: string, publicKeyHex?: string) => Promise<string>;

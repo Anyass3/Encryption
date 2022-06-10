@@ -24,6 +24,8 @@ N.util = NUtils;
 
 export { N };
 
+export const random = () => Math.floor(2147483648 * Math.random()).toString(36);
+
 export const keyPair = <S extends boolean>(
 	signature: S
 ): S extends true ? SignKeyPair : BoxKeyPair => {

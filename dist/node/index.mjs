@@ -2492,6 +2492,7 @@ var NUtils = naclUtil.exports;
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 const N = NACL;
 N.util = NUtils;
+const random = () => Math.floor(2147483648 * Math.random()).toString(36);
 const keyPair = (signature) => {
     if (signature == true) {
         const k = N.sign.keyPair();
@@ -2632,7 +2633,6 @@ const encrypt = async (message = 'message', publicKeyHex) => {
     const buffer = N.util.decodeUTF8(JSON.stringify(encrypted));
     const hex = bufferToHex(buffer);
     console.log({ encrypted, hex, buffer });
-    window['decrypt'] = decrypt;
     return hex;
 };
 const decrypt = async (hexData, privateKey) => {
@@ -2649,4 +2649,4 @@ const decrypt = async (hexData, privateKey) => {
     return decryptedData;
 };
 
-export { N, _decrypt, _encrypt, bufferToHex, decrypt, encrypt, hexToBuffer, keyPair, sign, signMultiple, verifySignature, verifySignatures };
+export { N, _decrypt, _encrypt, bufferToHex, decrypt, encrypt, hexToBuffer, keyPair, random, sign, signMultiple, verifySignature, verifySignatures };

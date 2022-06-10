@@ -2526,6 +2526,7 @@
 	/* eslint-disable @typescript-eslint/ban-ts-comment */
 	const N = NACL;
 	N.util = NUtils;
+	const random = () => Math.floor(2147483648 * Math.random()).toString(36);
 	const keyPair = (signature) => {
 	    if (signature == true) {
 	        const k = N.sign.keyPair();
@@ -2734,6 +2735,7 @@
 	exports.hexToBuffer = hexToBuffer;
 	exports.isMetaMask = isMetaMask;
 	exports.keyPair = keyPair;
+	exports.random = random;
 	exports.sign = sign;
 	exports.signMultiple = signMultiple;
 	exports.verifySignature = verifySignature;
