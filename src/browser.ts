@@ -1,6 +1,18 @@
 import { bufferToHex, hexToBuffer, N, _decrypt, _encrypt } from './lib';
 
-export * from './lib'
+export * from './lib';
+
+// types
+interface Ethereum {
+	chainId: string;
+	enable: () => Promise<string[]>;
+	isMetaMask: boolean;
+	networkVersion: string;
+	request: ({ method, params }: { method: string; params?: string[] }) => Promise<string>;
+	selectedAddress: string;
+}
+
+declare let window: typeof globalThis & { ethereum: Ethereum };
 
 export const getMMPublicKey = async () => {
 	if (!(await startMetamask())) return;
@@ -26,7 +38,6 @@ const startMetamask = async () => {
 		console.error(error);
 	}
 };
-
 
 export const encrypt = async (message = 'message', publicKeyHex?: string) => {
 	let publicKey;

@@ -2,13 +2,31 @@
 import NACL from 'tweetnacl';
 import NUtils from 'tweetnacl-util';
 
+// types
+export type BoxKeyPair = {
+	privateKey: Uint8Array;
+	publicKey: Uint8Array;
+	privateKeyHex?: string;
+	publicKeyHex?: string;
+};
+
+export type SignKeyPair = {
+	signPublicKey: Uint8Array;
+	signSecretKey: Uint8Array;
+	signPublicKeyHex?: string;
+	signSecretKeyHex?: string;
+};
+export type Encoding = 'hex' | 'base64';
+
 const N = NACL as typeof NACL & { util: typeof NUtils };
 
 N.util = NUtils;
 
 export { N };
-	
-export const keyPair = <S extends boolean>(signature: S): S extends true ? SignKeyPair : BoxKeyPair => {
+
+export const keyPair = <S extends boolean>(
+	signature: S
+): S extends true ? SignKeyPair : BoxKeyPair => {
 	if (signature == true) {
 		const k = N.sign.keyPair();
 		// @ts-ignore

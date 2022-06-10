@@ -20,9 +20,7 @@ const config = (browser=true) => {
       { file: output.require||output.default, format: 'umd', name },
     ],
     plugins: [
-      resolve(browser?{
-        browser:true,preferBuiltins:true
-      }:{preferBuiltins:true}),
+      resolve({preferBuiltins: !browser, browser}),
       commonjs(),
       typescript({
         sourceMap: !production,

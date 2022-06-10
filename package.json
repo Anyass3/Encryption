@@ -8,13 +8,12 @@
     ".": {
       "node": {
         "import": "./dist/node/index.mjs",
-        "require": "./dist/node/index.js",
+        "require": "./dist/node/index.js"
       },
       "import": "./dist/index.mjs",
-      "default": "./dist/index.js",
-    "./typings": "./typings",
+      "default": "./dist/index.js"
+    },
     "./package.json": "./package.json"
-    }
   },
   "scripts": {
     "build": "rollup -c",
