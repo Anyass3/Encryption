@@ -26,7 +26,7 @@ const config = (browser=true) => {
         sourceMap: !production,
         inlineSources: !production,
       }),
-      // production && terser(),
+      production && terser(),
     ],
     watch: {
       clearScreen: false,

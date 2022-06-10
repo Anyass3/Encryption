@@ -1,4 +1,4 @@
-import { bufferToHex, hexToBuffer, N, _decrypt, _encrypt } from './lib';
+import { bufferToHex, hexToBuffer, nacl, _decrypt, _encrypt } from './lib';
 
 export * from './lib';
 
@@ -21,7 +21,6 @@ export const getMMPublicKey = async () => {
 			method: 'eth_getEncryptionPublicKey',
 			params: [window.ethereum.selectedAddress]
 		});
-		console.log('eth_getEncryptionPublicKey', pkey);
 		return pkey;
 	} catch (error) {
 		console.error(error);
@@ -43,7 +42,6 @@ export const encrypt = async (message = 'message', publicKeyHex?: string) => {
 	let publicKey;
 	if (!publicKeyHex) publicKey = await getMMPublicKey();
 	if (!publicKey && !publicKeyHex) {
-		console.error('NO Public Key');
 		return;
 	}
 	const encrypted = _encrypt(
@@ -51,16 +49,14 @@ export const encrypt = async (message = 'message', publicKeyHex?: string) => {
 		{ data: message },
 		'x25519-xsalsa20-poly1305'
 	);
-	const buffer = N.util.decodeUTF8(JSON.stringify(encrypted));
+	const buffer = nacl.util.decodeUTF8(JSON.stringify(encrypted));
 	const hex = bufferToHex(buffer);
-	console.log({ encrypted, hex, buffer });
-	window['decrypt'] = decrypt;
 	return hex;
 };
 
 export const decrypt = async (hexData: string, privateKey?: string) => {
 	const buffer = hexToBuffer(hexData);
-	const encryptedData = JSON.parse(N.util.encodeUTF8(buffer));
+	const encryptedData = JSON.parse(nacl.util.encodeUTF8(buffer));
 	let decryptedData;
 	try {
 		if (privateKey) decryptedData = _decrypt(encryptedData, privateKey);
@@ -74,6 +70,5 @@ export const decrypt = async (hexData: string, privateKey?: string) => {
 	} catch (error) {
 		console.error(error);
 	}
-	console.log({ encryptedData, buffer, decryptedData });
 	return decryptedData;
 };

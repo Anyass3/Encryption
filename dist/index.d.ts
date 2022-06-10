@@ -13,10 +13,9 @@ export type SignKeyPair = {
 	signSecretKeyHex?: string;
 };
 export type Encoding = 'hex' | 'base64';
-const N: NACL & {
+export const nacl: NACL & {
 	util: typeof NUtils;
 };
-export { N };
 export const keyPair: <S extends boolean>(
 	signature: S
 ) => S extends true ? SignKeyPair : BoxKeyPair;
