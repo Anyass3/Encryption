@@ -8,15 +8,17 @@
     ".": {
       "node": {
         "import": "./dist/node/index.mjs",
-        "require": "./dist/node/index.js"
+        "require": "./dist/node/index.js",
       },
       "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
+      "default": "./dist/index.js",
+    "./typings": "./typings",
+    "./package.json": "./package.json"
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
