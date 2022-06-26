@@ -116,7 +116,7 @@ const Encoding: 'hex' | 'base64';
   const encrypt: (data: string, publicKey: string) => Promise<string>;
   ```
 
-  In browser client the publicKey is optional. If publicKey is undefined, it assumes you want use your MetaMask account for ecryption. That is using your selected MetaMask account publicKey.
+  In browser client the publicKey is optional. If publicKey is undefined, it assumes you want use your MetaMask account for ecryption. That is, using your selected MetaMask account publicKey.
 
 - decrypt
 
