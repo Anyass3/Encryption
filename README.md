@@ -4,6 +4,11 @@ Public and private encryption and signatures with meta-mask support
 
 > It can be used both in nodejs and browser
 
+# Installation
+```bash
+npm i Anyass3/Encryption
+```
+
 # API
 
 #### Few important types
@@ -147,3 +152,12 @@ const Encoding: 'hex' | 'base64';
   ```typescript
   const isMetaMask: boolean;
   ```
+  
+# Usage Example
+
+Just import what you need
+
+```typescript
+import { nacl, encrypt, decrypt, sign, verifySignature } from 'encryption'
+...
+```
