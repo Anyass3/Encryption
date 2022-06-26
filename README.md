@@ -2,9 +2,11 @@
 
 Public and private encryption and signatures with meta-mask support
 
+> It can be used both in nodejs and browser
+
 # API
 
-### Few important types
+#### Few important types
 
 ```typescript
 interface BoxKeyPair {
@@ -22,7 +24,7 @@ interface SignKeyPair {
 const Encoding: 'hex' | 'base64';
 ```
 
-### Both nodejs and browser client
+#### Both nodejs and browser client
 
 - nacl
 
@@ -31,11 +33,12 @@ const Encoding: 'hex' | 'base64';
   ```
 
   NACL --> tweetnacl
+  
   NACL_UTIL --> tweetnacl-util
 
 - keyPair
 
-  A function that generates a random signature keypair if `keyPair(true)` else encrytion keypair
+  A function that generates a random signature keypair if `keyPair(true)` else encryption keypair
 
   ```typescript
   const keyPair: <S extends boolean>(signature: S) => S extends true ? SignKeyPair : BoxKeyPair;
@@ -51,7 +54,9 @@ const Encoding: 'hex' | 'base64';
 
 - verifySignature
 
-  Verifies a signed string data depending on the encoding(`hex`or`base64`) and `signPublicKey` is `hex` string.
+  Verifies a signed string data depending on the encoding(`hex`or`base64`)
+  
+  `signPublicKey` is `hex` string.
 
   ```typescript
   const verifySignature: (signedData: string, signPublicKey: string, encoding?: Encoding) => string;
@@ -59,22 +64,22 @@ const Encoding: 'hex' | 'base64';
 
 - signMultiple
 
-  Similar to sign but signs a string data with multiple secret keys, but the order is important for verification.
+  Similar to sign but signs a string data with multiple secret keys
+  
+  The order is important for verification.
 
   ```typescript
-  const sign: (data: string, signSecretKeys: string[], encoding?: Encoding) => string;
+  const signMultiple: (data: string, signSecretKeys: string[], encoding?: Encoding) => string;
   ```
 
 - verifySignatures
 
-  Similar to verifySignature but verifies a string data with multiple public keys, but the order should be the reverse of the secret keys during signing.
+  Similar to verifySignature but verifies a string data with multiple public keys
+  
+  The order should be the reverse of the secret keys during signing.
 
   ```typescript
-  const verifySignature: (
-  	signedData: string,
-  	signPublicKeys: string[],
-  	encoding?: Encoding
-  ) => string;
+  const verifySignatures: (signedData: string, signPublicKeys: string[], encoding?: Encoding) => string;
   ```
 
 - bufferToHex
@@ -125,7 +130,7 @@ const Encoding: 'hex' | 'base64';
 
   In browser client the privateKey is optional. If privateKey is undefined, it assumes you want use your MetaMask account for decryption
 
-#### Only for browser client
+#### Only in browser client
 
 - getMetaMaskPublicKey
 
