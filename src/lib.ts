@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import NACL from 'tweetnacl';
-import NUtils from 'tweetnacl-util';
+import NACL_UTIL from 'tweetnacl-util';
 
 // types
 export type BoxKeyPair = {
@@ -18,9 +18,9 @@ export type SignKeyPair = {
 };
 export type Encoding = 'hex' | 'base64';
 
-const nacl = NACL as typeof NACL & { util: typeof NUtils };
+const nacl = NACL as typeof NACL & { util: typeof NACL_UTIL };
 
-nacl.util = NUtils;
+nacl.util = NACL_UTIL;
 
 export { nacl };
 

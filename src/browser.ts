@@ -14,7 +14,7 @@ interface Ethereum {
 
 declare let window: typeof globalThis & { ethereum: Ethereum };
 
-export const getMMPublicKey = async () => {
+export const getMetaMaskPublicKey = async () => {
 	if (!(await startMetamask())) return;
 	try {
 		const pkey = await window.ethereum.request({
@@ -40,7 +40,7 @@ const startMetamask = async () => {
 
 export const encrypt = async (message = 'message', publicKeyHex?: string) => {
 	let publicKey;
-	if (!publicKeyHex) publicKey = await getMMPublicKey();
+	if (!publicKeyHex) publicKey = await getMetaMaskPublicKey();
 	if (!publicKey && !publicKeyHex) {
 		return;
 	}
