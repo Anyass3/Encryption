@@ -1,5 +1,5 @@
 import NACL from 'tweetnacl';
-import NUtils from 'tweetnacl-util';
+import NACL_UTIL from 'tweetnacl-util';
 export type BoxKeyPair = {
 	privateKey: Uint8Array;
 	publicKey: Uint8Array;
@@ -14,7 +14,7 @@ export type SignKeyPair = {
 };
 export type Encoding = 'hex' | 'base64';
 export const nacl: NACL & {
-	util: typeof NUtils;
+	util: typeof NACL_UTIL;
 };
 export const keyPair: <S extends boolean>(
 	signature: S
@@ -34,5 +34,5 @@ export const signMultiple: (data: string, signSecretKeys: string[], encoding?: E
 export function bufferToHex(buffer: Uint8Array): string;
 export function hexToBuffer(hex: string): Uint8Array;
 export function random(): string;
-export const encrypt: (message?: string, publicKeyHex?: string) => Promise<string>;
-export const decrypt: (hexData: string, privateKey: string) => Promise<string>;
+export const encrypt: (data: string, publicKey: string) => Promise<string>;
+export const decrypt: (encryptedData: string, privateKey: string) => Promise<string>;
