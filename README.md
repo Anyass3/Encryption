@@ -64,7 +64,7 @@ const Encoding: 'hex' | 'base64';
 
 - signMultiple
 
-  Similar to sign but signs a string data with multiple secret keys
+  Similar to `sign` but signs a string data with multiple secret keys
   
   The order is important for verification.
 
@@ -74,7 +74,7 @@ const Encoding: 'hex' | 'base64';
 
 - verifySignatures
 
-  Similar to verifySignature but verifies a string data with multiple public keys
+  Similar to `verifySignature` but verifies a string data with multiple public keys
   
   The order should be the reverse of the secret keys during signing.
 
