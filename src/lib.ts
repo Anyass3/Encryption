@@ -6,15 +6,15 @@ import NACL_UTIL from 'tweetnacl-util';
 export type BoxKeyPair = {
 	privateKey: Uint8Array;
 	publicKey: Uint8Array;
-	privateKeyHex?: string;
-	publicKeyHex?: string;
+	privateKeyHex: string;
+	publicKeyHex: string;
 };
 
 export type SignKeyPair = {
 	signPublicKey: Uint8Array;
 	signSecretKey: Uint8Array;
-	signPublicKeyHex?: string;
-	signSecretKeyHex?: string;
+	signPublicKeyHex: string;
+	signSecretKeyHex: string;
 };
 export type Encoding = 'hex' | 'base64';
 
