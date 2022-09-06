@@ -174,12 +174,13 @@ export const signMultiple = (data: string, signSecretKeys: string[], encoding?: 
 	}, data);
 };
 
+//ref: https://github.com/uniqpath/connectome/blob/main/src/utils/index.js#L19
 export function bufferToHex(buffer) {
 	return Array.from(new Uint8Array(buffer))
 		.map((b) => b.toString(16).padStart(2, '0'))
 		.join('');
 }
-
+// ref: https://github.com/uniqpath/connectome/blob/main/src/utils/index.js#L25
 export function hexToBuffer(hex) {
 	const tokens = hex.match(/.{1,2}(?=(.{2})+(?!.))|.{1,2}$/g);
 	return new Uint8Array(tokens.map((token) => parseInt(token, 16)));
