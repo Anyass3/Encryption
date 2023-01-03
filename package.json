@@ -4,12 +4,14 @@
   "description": "Public and private encryption and signatures with meta-mask support",
   "exports": {
     ".": {
-      "node": {
+			"browser": {
+        "import": "./dist/index.mjs",
+        "default": "./dist/index.js"
+			},
+			"default": {
         "import": "./dist/node/index.mjs",
         "default": "./dist/node/index.js"
-      },
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
+			}
     },
     "./package.json": "./package.json"
   },
