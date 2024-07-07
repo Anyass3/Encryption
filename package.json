@@ -1,6 +1,6 @@
 {
   "name": "@anyass3/encryption",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Public and private encryption and signatures with meta-mask support",
   "exports": {
     ".": {
